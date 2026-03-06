@@ -1,7 +1,7 @@
 [project]
 name = "ssh-tunnel-manager"
 version = "0.1.0"
-description = "SSH tunnel manager with support for multiple connections and daemon mode"
+description = "SSH tunnel manager with support for multiple connections"
 requires-python = ">=3.11"
 dependencies = [
     "click>=8.1.0",

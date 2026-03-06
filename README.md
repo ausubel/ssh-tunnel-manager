@@ -175,7 +175,7 @@ This example creates an SSH tunnel to the remote server and automatically execut
 }
 ```
 
-**Note:** To use `kubectl` without `sudo`, you need to configure kubectl on the remote server. See "Configure kubectl to use without sudo" section in Troubleshooting.
+**Note:** To use `kubectl` without `sudo`, you need to configure kubectl on the remote server.
 
 **⚠️ Important:** Tunnels with `remote_command` **only work in foreground mode** because the remote command needs to stay active. Use:
 ```bash
@@ -236,42 +236,7 @@ psql -h localhost -p 5432 -U postgres
 
 **Note:** The `development-redis` tunnel has `"enabled": false`, so it will be ignored when starting tunnels. This is useful for maintaining configurations without having to delete them.
 
-## 🛠️ Troubleshooting
-
-For detailed solutions and special configurations, consult **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)**.
-
-### Tunnel doesn't connect
-
-1. Verify SSH works manually:
-```bash
-ssh -p 11050 username@192.168.4.163
-```
-
-2. Check logs:
-```bash
-uv run ssh-tunnel logs --follow
-```
-
-3. Verify local port is not in use:
-```bash
-# Windows
-netstat -ano | findstr :5433
-
-# Linux/macOS
-lsof -i :5433
-```
-
-### Tunnel disconnects constantly
-
-- Increase `max_retries` and `retry_delay` in configuration
-- Check network connection stability
-- Review SSH server logs
-
-### Special configuration for kubectl (K3s)
-
-If you use `remote_command` with `kubectl` on a K3s server, you need additional configuration. See **[TROUBLESHOOTING.md](TROUBLESHOOTING.md#configurar-kubectl-sin-sudo-k3s)** for detailed instructions.
-
-## 📝 Notes
+##  Notes
 
 - **Authentication**: You can use passwords (`password` field) or SSH keys
 - If you use SSH keys, they must be previously configured (`~/.ssh/id_rsa` or similar)
