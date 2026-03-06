@@ -1,0 +1,51 @@
+{
+  "tunnels": [
+    {
+      "name": "production-db",
+      "enabled": true,
+      "host": "192.168.4.163",
+      "port": 11050,
+      "user": "username",
+      "password": "your_password_here",
+      "local_port": 5433,
+      "remote_host": "localhost",
+      "remote_port": 5433,
+      "auto_reconnect": true,
+      "max_retries": 5,
+      "retry_delay": 10
+    },
+    {
+      "name": "k8s-postgres",
+      "enabled": true,
+      "host": "192.168.4.163",
+      "port": 11050,
+      "user": "username",
+      "local_port": 5432,
+      "remote_host": "localhost",
+      "remote_port": 5432,
+      "remote_command": "echo Hola",
+      "auto_reconnect": true, 
+      "max_retries": 5,
+      "retry_delay": 10
+    },
+    {
+      "name": "staging-redis",
+      "enabled": false,
+      "host": "192.168.4.164",
+      "port": 22,
+      "user": "username",
+      "password": "your_password_here",
+      "local_port": 6380,
+      "remote_host": "localhost",
+      "remote_port": 6379,
+      "auto_reconnect": true,
+      "max_retries": 3,
+      "retry_delay": 5
+    }
+  ],
+  "global": {
+    "log_level": "INFO",
+    "log_file": "logs/tunnels.log",
+    "healthcheck_interval": 30
+  }
+}
